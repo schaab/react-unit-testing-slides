@@ -1,0 +1,11 @@
+mixin slide(type)
+  -var isMarkdown = (type && type==='markdown') ? true : false;
+  - var slideClass = slideClass || '';
+
+  if isMarkdown
+    section(data-markdown)&attributes(attributes)
+      script(type="text/template")
+        block
+  else
+    section&attributes(attributes)
+      block
