@@ -13,18 +13,19 @@ html(lang="en")
       content="black-translucent"
     )
 
-    //- No pinch to zoom here
+    //- Viewport settings
     meta(
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     )
 
+    //- Meta information for the project
     block title
       title Your Presentation Title
       meta(name="description" content="SEO-friendly meta description")
       meta(name="author" content="Your Name")
 
-    //- Reveal structure
+    //- Reveal styles
     link(rel="stylesheet" href="css/reveal.css")
 
     //- Syntax highlighting
@@ -78,28 +79,8 @@ html(lang="en")
       and anything else that helps the look of your slideshow that should be
       visible on *every* slide.
     block extras
-      .hashtag
-        - var intent = 'https://twitter.com/intent/tweet?text=';
-        - var tweetText = title + ' by @' + twitterHandle;
-        - var encodedText = encodeURIComponent(tweetText);
-        - var tweetHashtags = '&amp;hashtags=' + hashtag;
-        - var tweetRelated = '&amp;related=' + twitterHandle;
-        - var tweetUrl = intent + encodedText + tweetHashtags + tweetRelated;
-        p.
-          Tweet:
-          #[a(href=tweetUrl target="_blank") @#{twitterHandle} ##{hashtag}]
-      footer
-        ul.inline
-          li.
-            &ldquo;#{title}&rdquo; by #[a(href=authorLink) #{author}]
-          li
-            a(href="https://twitter.com/"+twitterHandle).
-              @#{twitterHandle}
-          li
-            a(href="https://github.com/"+githubHandle).
-              github.com/#{githubHandle}
 
-    block scripts
+    block defaultscripts
       script(src="lib/js/head.min.js")
       script(src="js/reveal.js")
       script.
@@ -121,3 +102,5 @@ html(lang="en")
             { src: 'plugin/notes/notes.js', async: true }
           ]
         });
+
+    block scripts
