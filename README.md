@@ -17,3 +17,10 @@ They also offer baseline functionality when enhancing or re-factoring code.
 
 In this presentation I am going to show you **WHY** and **HOW** you to test your code. 
 In the end you'll end up getting a better nights sleep. The lambs will thank you.
+
+## Credits
+
+Presentation built by [Jared Schaab][2] using the sweet [reveal.js + jade][3] 
+
+[2]: http://www.jaredschaab.com
+[3]: http://jlengstorf.github.io/reveal.js-jade/
