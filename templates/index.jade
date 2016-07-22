@@ -18,20 +18,40 @@ block title
 //- Add your slides here. See templates/includes/_mixins.jade for information 
 //- on how `+slide` works.
 block slides
+    - var author = 'Jared Schaab';
+    - var authorEmail = 'jared.schaab@gmail.com';
+    - var twitterHandle = 'JaredSchaab';
+    - var githubHandle = 'schaab';
 
-  +slide
-    h1 Test Your Way to a Better Sleep
-    h3 Testing React Components with Enzyme
-    p
-      small.
-        Created by #[a(href=authorLink) author] /
-        #[a(href="https://twitter.com/jaredschaab") @jaredschaab]
+    +slide
+        h1 Test Your Way to a Better Sleep
 
-  +slide
-    h2
-    p.
-      reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+        p Unit test your react components
+            br
+            | and take a step out of the Javascript Wild West
 
 
+        p by #[a(href=authorLink)= author]
+            br
+            small
+                a(href="https://twitter.com/" + twitterHandle)= '@' + twitterHandle
+                |  |&nbsp;
+                a(href="mailto:" + authorEmail)= authorEmail
 
+    +slide
+        h1 Why Unit Test?
+
+        ul
+            li.fragment Documentation for new developers
+            li.fragment Baseline functionality for when refactoring
+            li.fragment
+                a(href="http://evidencebasedse.com/?q=node/78")= "Reduce number of bugs"
+            li.fragment Validate bugs are fixed
+                span.fragment &hellip;and not broken again later
+
+
+        aside.notes Shouldn&#8217;t have to really do this one but it almost feels necessary
+
+    +slide
+        h1
 
