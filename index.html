@@ -41,7 +41,58 @@
           <aside class="notes">Shouldn&#8217;t have to really do this one but it almost feels necessary</aside>
         </section>
         <section>
-          <h1></h1>
+          <h1>What Makes a Good Unit Test?</h1>
+        </section>
+        <section>
+          <h2>Readable</h2>
+          <pre><code data-trim contenteditable>describe('add()', () => {
+    it('should add stuffs', () => {
+        expect(add(1, 2)).toEqual(3);
+        expect(add(0, 0)).toEqual(0);
+        expect(add(-1, 2)).toEqual(1);
+        expect(add(-1, -2)).toEqual(-3);
+        expect(add(1, 2, 5)).toEqual(3);
+
+    });
+});
+
+</code></pre>
+          <aside class="notes">tests a singular thing and is explicit. If this test fails how do we know what case failed?</aside>
+        </section>
+        <section>
+          <h3>Much better&hellip;</h3>
+          <pre><code data-trim contenteditable>describe('add()', () => {
+    it('should add two positive numbers', () => {
+        expect(add(1, 2)).toEqual(3);
+    });
+
+    it('should add zeros', () => {
+        expect(add(0, 0)).toEqual(0);
+    });
+
+    it('should add a negative and a positive value', () => {
+        expect(add(-1, 2)).toEqual(1);
+        expect(add(1, -2)).toEqual(-1);
+    });
+});
+</code></pre>
+        </section>
+        <section>
+          <h2>Trustworthy</h2>
+          <pre class="fragment"><code data-trim contenteditable>describe('add()', () => {
+    it('should add two positive numbers', () => {
+        expect(3).toEqual(3);
+    });
+});
+</code></pre>
+          <h2 class="fragment">NOPE!!1</h2>
+        </section>
+        <section>
+          <h2>Maintainable</h2>
+          <aside class="notes">These are all things we want to accomplish when designing our react components</aside>
+        </section>
+        <section>
+          <h2> </h2>
         </section>
       </div>
     </div>

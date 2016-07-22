@@ -53,5 +53,70 @@ block slides
         aside.notes Shouldn&#8217;t have to really do this one but it almost feels necessary
 
     +slide
-        h1
+        h1 What Makes a Good Unit Test?
+
+    +slide
+        h2 Readable
+
+        pre
+            code(data-trim contenteditable).
+                describe('add()', () => {
+                    it('should add stuffs', () => {
+                        expect(add(1, 2)).toEqual(3);
+                        expect(add(0, 0)).toEqual(0);
+                        expect(add(-1, 2)).toEqual(1);
+                        expect(add(-1, -2)).toEqual(-3);
+                        expect(add(1, 2, 5)).toEqual(3);
+
+                    });
+                });
+
+
+        aside.notes tests a singular thing and is explicit. If this test fails how do we know what case failed?
+
+    +slide
+        h3 Much better&hellip;
+
+        pre
+            code(data-trim contenteditable).
+                describe('add()', () => {
+                    it('should add two positive numbers', () => {
+                        expect(add(1, 2)).toEqual(3);
+                    });
+
+                    it('should add zeros', () => {
+                        expect(add(0, 0)).toEqual(0);
+                    });
+
+                    it('should add a negative and a positive value', () => {
+                        expect(add(-1, 2)).toEqual(1);
+                        expect(add(1, -2)).toEqual(-1);
+                    });
+                });
+
+    +slide
+        h2 Trustworthy
+
+        pre.fragment
+            code(data-trim contenteditable).
+                describe('add()', () => {
+                    it('should add two positive numbers', () => {
+                        expect(3).toEqual(3);
+                    });
+                });
+
+        h2.fragment NOPE!!1
+
+    +slide
+        h2 Maintainable
+
+        aside.notes These are all things we want to accomplish when designing our react components
+
+    +slide
+        h2 
+
+
+
+
+
 
