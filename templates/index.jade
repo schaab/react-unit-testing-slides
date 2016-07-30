@@ -58,7 +58,7 @@ block slides
     +slide
         h2 Readable
 
-        pre
+        pre.fragment
             code(data-trim contenteditable).
                 describe('add()', () => {
                     it('should add stuffs', () => {
@@ -110,13 +110,84 @@ block slides
     +slide
         h2 Maintainable
 
-        aside.notes These are all things we want to accomplish when designing our react components
+        aside.notes The cool thing is these are all things we want to accomplish when designing our react components
 
     +slide
-        h2 
+        h2.fragment.fade-out AWESOME!!
+
+        p.fragment.fade-in So now what?
+
+    +slide
+        +slide(data-background="http://i.giphy.com/11rIergnpiYpvW.gif")
+            h2 Let&apos;s Get Set-up
+
+        +slide
+            h2 Mocha
+
+            aside.notes Testing Framework can use Jasmine or Karma
+
+        +slide
+            h2 Chai
+
+            aside.notes Can use any assertion library you want
+
+        +slide
+            h2 Enzyme
+
+        +slide
+            h2 Babel
+
+        +slide
+            h2 Sinon
+
+        +slide
+            h2 jsdom
 
 
+    +slide
+        h2 Suggested Structure
 
+        pre
+            code(data-trim contenteditable).
+                actions/
+                    CommandActions.js
+                    CommandActions.test.js
+                    UserActions.js
+                    UserActions.test.js
+                    ...
+                components/
+                    Header.js
+                    Header.test.js
+                    Sidebar.js
+                    Sidebar.test.js
+                    ...
+                containers/
+                    App.js
+                    App.test.js
+                    Command.js
+                    Command.test.js
+                    ...
+                reducers/
+                    index.js
+                    index.test.js
+                    command.js
+                    command.test.js
+                    ...
+
+        aside.notes Place test files right next to the file in test. Makes finding tests easy. 
+
+    +slide
+        h2 Install Dependencies
+
+        pre
+            code(data-trim contenteditable).
+                npm i --save-dev enzyme mocha chai babel sinon jsdom
+                npm i --save-dev react-addons-test-utils react-dom
+
+        aside.notes In theory babel should be installed already so you can use react and the new ES2016 hotness
+
+    +slide
+        h2
 
 
 
