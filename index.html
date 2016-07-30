@@ -45,7 +45,7 @@
         </section>
         <section>
           <h2>Readable</h2>
-          <pre><code data-trim contenteditable>describe('add()', () => {
+          <pre class="fragment"><code data-trim contenteditable>describe('add()', () => {
     it('should add stuffs', () => {
         expect(add(1, 2)).toEqual(3);
         expect(add(0, 0)).toEqual(0);
@@ -89,10 +89,75 @@
         </section>
         <section>
           <h2>Maintainable</h2>
-          <aside class="notes">These are all things we want to accomplish when designing our react components</aside>
+          <aside class="notes">The cool thing is these are all things we want to accomplish when designing our react components</aside>
         </section>
         <section>
-          <h2> </h2>
+          <h2 class="fragment fade-out">AWESOME!!</h2>
+          <p class="fragment fade-in">So now what?</p>
+        </section>
+        <section>
+          <section data-background="http://i.giphy.com/11rIergnpiYpvW.gif">
+            <h2>Let&apos;s Get Set-up</h2>
+          </section>
+          <section>
+            <h2>Mocha</h2>
+            <aside class="notes">Testing Framework can use Jasmine or Karma</aside>
+          </section>
+          <section>
+            <h2>Chai</h2>
+            <aside class="notes">Can use any assertion library you want</aside>
+          </section>
+          <section>
+            <h2>Enzyme</h2>
+          </section>
+          <section>
+            <h2>Babel</h2>
+          </section>
+          <section>
+            <h2>Sinon</h2>
+          </section>
+          <section>
+            <h2>jsdom</h2>
+          </section>
+        </section>
+        <section>
+          <h2>Suggested Structure</h2>
+          <pre><code data-trim contenteditable>actions/
+    CommandActions.js
+    CommandActions.test.js
+    UserActions.js
+    UserActions.test.js
+    ...
+components/
+    Header.js
+    Header.test.js
+    Sidebar.js
+    Sidebar.test.js
+    ...
+containers/
+    App.js
+    App.test.js
+    Command.js
+    Command.test.js
+    ...
+reducers/
+    index.js
+    index.test.js
+    command.js
+    command.test.js
+    ...
+</code></pre>
+          <aside class="notes">Place test files right next to the file in test.</aside>
+        </section>
+        <section>
+          <h2>Install Dependencies</h2>
+          <pre><code data-trim contenteditable>npm i --save-dev enzyme mocha chai babel sinon jsdom
+npm i --save-dev react-addons-test-utils react-dom
+</code></pre>
+          <aside class="notes">In theory babel should be installed already so you can use react and the new ES2016 hotness</aside>
+        </section>
+        <section>
+          <h2></h2>
         </section>
       </div>
     </div>
