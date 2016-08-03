@@ -117,32 +117,95 @@ block slides
 
         p.fragment.fade-in So now what?
 
+
+    +slide(data-background="http://i.giphy.com/11rIergnpiYpvW.gif")
+        h2 Let&apos;s Get Set-up
+
+    +slide(data-background="https://cldup.com/xFVFxOioAU.svg")
+
+        aside.notes Testing Framework can use Jasmine or Karma
+
+    +slide(data-background="https://avatars2.githubusercontent.com/u/1515293?v=3&s=800")
+
+        aside.notes Can use any assertion library you want
+
     +slide
-        +slide(data-background="http://i.giphy.com/11rIergnpiYpvW.gif")
-            h2 Let&apos;s Get Set-up
-
-        +slide
-            h2 Mocha
-
-            aside.notes Testing Framework can use Jasmine or Karma
-
-        +slide
-            h2 Chai
-
-            aside.notes Can use any assertion library you want
-
         +slide
             h2 Enzyme
+
+            p More info at the
+                a(href="https://github.com/airbnb/enzyme")= 'Enzyme github repo'
+
+            aside.notes
+                ul
+                    li Allows 3 types of rendering to support different testing needs
+                    li familiar jQuery type selectors
+
+        +slide
+            h2 shallow
+
+            pre.fragment
+                code(data-trim contenteditable).
+                    import { shallow } from 'enzyme';
+
+                    it('should have some things', () => {
+                        const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
+                        expect(wrapper.find('&lt;selector&gt;')).to.have.length(3);
+                    });
+
+
+            aside.notes
+                ul
+                    li Test component in isolation.
+                    li No access to lifecycle events.
+                    li Returns `ShallowWrapper` which allows you to query the rendered output
+
+        +slide
+            h2 mount
+
+            pre.fragment
+                code(data-trim contenteditable).
+                    import { mount } from 'enzyme';
+
+                    it('calls componentDidMount', () => {
+                        spy(WickedAwesomeComponent.prototype, 'componentDidMount');
+                        const wrapper = mount(&lt;WickedAwesomeComponent &#47;&gt;);
+                        expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce).to.equal(true);
+                    });
+
+            aside.notes
+                ul
+                    li Ideal for testing lifecycle events
+                    li Must be run in a browser like environment
+                    li Suggested to use jsdom, which is effectively a headless browser
+                    li Can do many of the same queries as `shallow`
+
+        +slide
+            h2 render
+
+            pre.fragment
+                code(data-trim contenteditable).
+                    import { render } from 'enzyme';
+
+                    it('has words', () => {
+                        // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
+                        var wrapper = render(&ltWickedAwesomeComponent words="some words here" &#47;&gt;);
+                        expect(wrapper.text()).to.contain('some words here');
+                    });
+
+            aside.notes
+                ul
+                    li Used to render react components to static HTML
+                    li Validate the produced HTML
+                    li Uses a 3rd party HTML parsing library `Cheerio`
 
         +slide
             h2 Babel
 
+            aside.notes Used to transpile tests
+
         +slide
             h2 Sinon
-
-        +slide
-            h2 jsdom
-
 
     +slide
         h2 Suggested Structure
@@ -174,20 +237,23 @@ block slides
                     command.test.js
                     ...
 
-        aside.notes Place test files right next to the file in test. Makes finding tests easy. 
+        aside.notes Place test files right next to the file in test. Makes finding tests easy.
 
     +slide
         h2 Install Dependencies
 
         pre
             code(data-trim contenteditable).
-                npm i --save-dev enzyme mocha chai babel sinon jsdom
-                npm i --save-dev react-addons-test-utils react-dom
+                npm i --save-dev enzyme mocha chai babel sinon jsdom react-addons-test-utils react-dom
 
         aside.notes In theory babel should be installed already so you can use react and the new ES2016 hotness
 
     +slide
-        h2
+        h2 Other Things to Consider
+
+        ul
+
+            li ?
 
 
 
