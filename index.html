@@ -105,19 +105,18 @@
           <aside class="notes">Can use any assertion library you want</aside>
         </section>
         <section>
-          <section>
-            <h2>Enzyme</h2>
-            <p>More info at the<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
-            <aside class="notes">
-              <ul>
-                <li>Allows 3 types of rendering to support different testing needs</li>
-                <li>familiar jQuery type selectors</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <h2>shallow</h2>
-            <pre class="fragment"><code data-trim contenteditable>import { shallow } from 'enzyme';
+          <h2>Enzyme</h2>
+          <p>More info at the<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
+          <aside class="notes">
+            <ul>
+              <li>Allows 3 types of rendering to support different testing needs</li>
+              <li>familiar jQuery type selectors</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>shallow</h2>
+          <pre class="fragment"><code data-trim contenteditable>import { shallow } from 'enzyme';
 
 it('should have some things', () => {
     const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
@@ -125,17 +124,17 @@ it('should have some things', () => {
 });
 
 </code></pre>
-            <aside class="notes">
-              <ul>
-                <li>Test component in isolation.</li>
-                <li>No access to lifecycle events.</li>
-                <li>Returns `ShallowWrapper` which allows you to query the rendered output</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <h2>mount</h2>
-            <pre class="fragment"><code data-trim contenteditable>import { mount } from 'enzyme';
+          <aside class="notes">
+            <ul>
+              <li>Test component in isolation.</li>
+              <li>No access to lifecycle events.</li>
+              <li>Returns `ShallowWrapper` which allows you to query the rendered output</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>mount</h2>
+          <pre class="fragment"><code data-trim contenteditable>import { mount } from 'enzyme';
 
 it('calls componentDidMount', () => {
     spy(WickedAwesomeComponent.prototype, 'componentDidMount');
@@ -143,18 +142,18 @@ it('calls componentDidMount', () => {
     expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce).to.equal(true);
 });
 </code></pre>
-            <aside class="notes">
-              <ul>
-                <li>Ideal for testing lifecycle events</li>
-                <li>Must be run in a browser like environment</li>
-                <li>Suggested to use jsdom, which is effectively a headless browser</li>
-                <li>Can do many of the same queries as `shallow`</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <h2>render</h2>
-            <pre class="fragment"><code data-trim contenteditable>import { render } from 'enzyme';
+          <aside class="notes">
+            <ul>
+              <li>Ideal for testing lifecycle events</li>
+              <li>Must be run in a browser like environment</li>
+              <li>Suggested to use jsdom, which is effectively a headless browser</li>
+              <li>Can do many of the same queries as `shallow`</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>render</h2>
+          <pre class="fragment"><code data-trim contenteditable>import { render } from 'enzyme';
 
 it('has words', () => {
     // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
@@ -162,21 +161,20 @@ it('has words', () => {
     expect(wrapper.text()).to.contain('some words here');
 });
 </code></pre>
-            <aside class="notes">
-              <ul>
-                <li>Used to render react components to static HTML</li>
-                <li>Validate the produced HTML</li>
-                <li>Uses a 3rd party HTML parsing library `Cheerio`</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <h2>Babel</h2>
-            <aside class="notes">Used to transpile tests</aside>
-          </section>
-          <section>
-            <h2>Sinon</h2>
-          </section>
+          <aside class="notes">
+            <ul>
+              <li>Used to render react components to static HTML</li>
+              <li>Validate the produced HTML</li>
+              <li>Uses a 3rd party HTML parsing library `Cheerio`</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h2>Babel</h2>
+          <aside class="notes">Used to transpile tests</aside>
+        </section>
+        <section>
+          <h2>Sinon</h2>
         </section>
         <section>
           <h2>Suggested Structure</h2>
