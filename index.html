@@ -25,7 +25,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
+        <section data-background="http://i.giphy.com/lUN33MuYWsXXa.gif">
           <h1>Test Your Way to a Better Sleep</h1>
           <p>Unit test your react components<br>and take a step out of the Javascript Wild West</p>
           <p>by <a>Jared Schaab</a><br><small><a href="https://twitter.com/JaredSchaab">@JaredSchaab</a> |&nbsp;<a href="mailto:jared.schaab@gmail.com">jared.schaab@gmail.com</a></small></p>
@@ -34,6 +34,7 @@
           <h1>Why Unit Test?</h1>
           <ul>
             <li class="fragment">Documentation for new developers</li>
+            <li class="fragment">Degree of confidence that functionality is correct</li>
             <li class="fragment">Baseline functionality for when refactoring</li>
             <li class="fragment"><a href="http://evidencebasedse.com/?q=node/78">Reduce number of bugs</a></li>
             <li class="fragment">Validate bugs are fixed<span class="fragment">&hellip;and not broken again later</span></li>
@@ -41,11 +42,15 @@
           <aside class="notes">Shouldn&#8217;t have to really do this one but it almost feels necessary</aside>
         </section>
         <section>
-          <h1>What Makes a Good Unit Test?</h1>
+          <h1>Characteristics of a Good Unit Test</h1>
+          <aside class="notes">Readable, Trustworthy, Maintainable</aside>
         </section>
         <section>
           <h2>Readable</h2>
-          <pre class="fragment"><code data-trim contenteditable>describe('add()', () => {
+          <aside class="notes">tests a singular thing and is explicit. No outside dependencies.</aside>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="javascript">describe('add()', () => {
     it('should add stuffs', () => {
         expect(add(1, 2)).toEqual(3);
         expect(add(0, 0)).toEqual(0);
@@ -55,13 +60,8 @@
 
     });
 });
-
 </code></pre>
-          <aside class="notes">tests a singular thing and is explicit. If this test fails how do we know what case failed?</aside>
-        </section>
-        <section>
-          <h3>Much better&hellip;</h3>
-          <pre><code data-trim contenteditable>describe('add()', () => {
+          <pre class="fragment fade-in"><code data-trim contenteditable class="javascript">describe('add()', () => {
     it('should add two positive numbers', () => {
         expect(add(1, 2)).toEqual(3);
     });
@@ -79,50 +79,100 @@
         </section>
         <section>
           <h2>Trustworthy</h2>
-          <pre class="fragment"><code data-trim contenteditable>describe('add()', () => {
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="javascript">describe('add()', () => {
     it('should add two positive numbers', () => {
         expect(3).toEqual(3);
     });
 });
 </code></pre>
-          <h2 class="fragment">NOPE!!1</h2>
         </section>
         <section>
           <h2>Maintainable</h2>
-          <aside class="notes">The cool thing is these are all things we want to accomplish when designing our react components</aside>
+          <aside class="notes">
+            <ul>
+              <li>Good unit tests are concise</li>
+              <li>Large amounts of mocking/setup are usually code smells</li>
+              <li>The cool thing is these are all things we want to accomplish when designing our react components</li>
+            </ul>
+          </aside>
         </section>
         <section>
-          <h2 class="fragment fade-out">AWESOME!!</h2>
+          <h2>Suggested Structure</h2>
+          <pre><code data-trim contenteditable>actions/
+    CommandActions.js
+    CommandActions.spec.js
+    UserActions.js
+    UserActions.spec.js
+    ...
+components/
+    Header.js
+    Header.spec.js
+    Sidebar.js
+    Sidebar.spec.js
+    ...
+containers/
+    App.js
+    App.spec.js
+    Command.js
+    Command.spec.js
+    ...
+reducers/
+    index.js
+    index.spec.js
+    command.js
+    command.spec.js
+    ...
+</code></pre>
+          <aside class="notes">Place test files right next to the file in test. Makes finding tests easy.</aside>
+        </section>
+        <section>
+          <h2>AWESOME!!</h2>
           <p class="fragment fade-in">So now what?</p>
         </section>
         <section data-background="http://i.giphy.com/11rIergnpiYpvW.gif">
-          <h2>Let&apos;s Get Set-up</h2>
+          <h2>Let&apos;s Try it Out</h2>
+          <p><a href="https://github.com/schaab/github-widget">Github Widget</a></p>
+        </section>
+        <section>
+          <h2>Install Dependencies</h2>
+          <aside class="notes">
+            <ul>
+              <li>Mocha</li>
+              <li>Chai</li>
+              <li>Enzyme</li>
+              <li>Babel</li>
+              <li>Sinon</li>
+            </ul>
+          </aside>
         </section>
         <section data-background="https://cldup.com/xFVFxOioAU.svg">
-          <aside class="notes">Testing Framework can use Jasmine or Karma</aside>
+          <aside class="notes">Can use any testing framework you want, choose Mocha because of familiarity</aside>
         </section>
         <section data-background="https://avatars2.githubusercontent.com/u/1515293?v=3&amp;s=800">
           <aside class="notes">Can use any assertion library you want</aside>
         </section>
         <section>
           <h2>Enzyme</h2>
-          <p>More info at the<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
+          <p>More info at the&nbsp;<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
           <aside class="notes">
             <ul>
-              <li>Allows 3 types of rendering to support different testing needs</li>
+              <li>Solves 3 three challenges (isolation, lifecycle, html)</li>
               <li>familiar jQuery type selectors</li>
+              <li>Why not jest? Not entirely a fan of auto-mocking</li>
             </ul>
           </aside>
         </section>
         <section>
           <h2>shallow</h2>
-          <pre class="fragment"><code data-trim contenteditable>import { shallow } from 'enzyme';
+          <pre class="fragment"><code data-trim contenteditable class="javascript">import { shallow } from 'enzyme';
 
 it('should have some things', () => {
     const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
-    expect(wrapper.find('&lt;selector&gt;')).to.have.length(3);
+    expect(wrapper.find('.class')).to.have.length(3);
 });
-
 </code></pre>
           <aside class="notes">
             <ul>
@@ -134,7 +184,7 @@ it('should have some things', () => {
         </section>
         <section>
           <h2>mount</h2>
-          <pre class="fragment"><code data-trim contenteditable>import { mount } from 'enzyme';
+          <pre class="fragment"><code data-trim contenteditable class="javascript">import { mount } from 'enzyme';
 
 it('calls componentDidMount', () => {
     spy(WickedAwesomeComponent.prototype, 'componentDidMount');
@@ -153,7 +203,7 @@ it('calls componentDidMount', () => {
         </section>
         <section>
           <h2>render</h2>
-          <pre class="fragment"><code data-trim contenteditable>import { render } from 'enzyme';
+          <pre class="fragment"><code data-trim contenteditable class="javascript">import { render } from 'enzyme';
 
 it('has words', () => {
     // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
@@ -171,50 +221,25 @@ it('has words', () => {
         </section>
         <section>
           <h2>Babel</h2>
+          <pre class="fragment"><code data-trim contenteditable class="javascript">import { shallow } from 'enzyme';
+
+// note ES2015 arrow function and JSX
+// not currently supported with node
+it('should have some things', () => {
+    const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
+    expect(wrapper.find('.class')).to.have.length(3);
+});
+</code></pre>
           <aside class="notes">Used to transpile tests</aside>
         </section>
         <section>
           <h2>Sinon</h2>
         </section>
         <section>
-          <h2>Suggested Structure</h2>
-          <pre><code data-trim contenteditable>actions/
-    CommandActions.js
-    CommandActions.test.js
-    UserActions.js
-    UserActions.test.js
-    ...
-components/
-    Header.js
-    Header.test.js
-    Sidebar.js
-    Sidebar.test.js
-    ...
-containers/
-    App.js
-    App.test.js
-    Command.js
-    Command.test.js
-    ...
-reducers/
-    index.js
-    index.test.js
-    command.js
-    command.test.js
-    ...
-</code></pre>
-          <aside class="notes">Place test files right next to the file in test. Makes finding tests easy.</aside>
-        </section>
-        <section>
-          <h2>Install Dependencies</h2>
-          <pre><code data-trim contenteditable>npm i --save-dev enzyme mocha chai babel sinon jsdom react-addons-test-utils react-dom
-</code></pre>
-          <aside class="notes">In theory babel should be installed already so you can use react and the new ES2016 hotness</aside>
-        </section>
-        <section>
           <h2>Other Things to Consider</h2>
           <ul>
-            <li>?</li>
+            <li>Git pre-commit hooks</li>
+            <li>Code Coverage</li>
           </ul>
         </section>
       </div>
