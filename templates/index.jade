@@ -23,7 +23,7 @@ block slides
     - var twitterHandle = 'JaredSchaab';
     - var githubHandle = 'schaab';
 
-    +slide
+    +slide(data-background="http://i.giphy.com/lUN33MuYWsXXa.gif")
         h1 Test Your Way to a Better Sleep
 
         p Unit test your react components
@@ -43,23 +43,28 @@ block slides
 
         ul
             li.fragment Documentation for new developers
+            li.fragment Degree of confidence that functionality is correct
             li.fragment Baseline functionality for when refactoring
             li.fragment
                 a(href="http://evidencebasedse.com/?q=node/78")= "Reduce number of bugs"
             li.fragment Validate bugs are fixed
                 span.fragment &hellip;and not broken again later
 
-
         aside.notes Shouldn&#8217;t have to really do this one but it almost feels necessary
 
     +slide
-        h1 What Makes a Good Unit Test?
+        h1 Characteristics of a Good Unit Test
+
+        aside.notes Readable, Trustworthy, Maintainable
 
     +slide
         h2 Readable
 
-        pre.fragment
-            code(data-trim contenteditable).
+        aside.notes tests a singular thing and is explicit. No outside dependencies.
+
+    +slide
+        pre
+            code(data-trim contenteditable class="javascript").
                 describe('add()', () => {
                     it('should add stuffs', () => {
                         expect(add(1, 2)).toEqual(3);
@@ -71,14 +76,8 @@ block slides
                     });
                 });
 
-
-        aside.notes tests a singular thing and is explicit. If this test fails how do we know what case failed?
-
-    +slide
-        h3 Much better&hellip;
-
-        pre
-            code(data-trim contenteditable).
+        pre.fragment.fade-in
+            code(data-trim contenteditable class="javascript").
                 describe('add()', () => {
                     it('should add two positive numbers', () => {
                         expect(add(1, 2)).toEqual(3);
@@ -97,62 +96,111 @@ block slides
     +slide
         h2 Trustworthy
 
-        pre.fragment
-            code(data-trim contenteditable).
+        aside.notes
+
+    +slide
+        pre
+            code(data-trim contenteditable class="javascript").
                 describe('add()', () => {
                     it('should add two positive numbers', () => {
                         expect(3).toEqual(3);
                     });
                 });
 
-        h2.fragment NOPE!!1
-
     +slide
         h2 Maintainable
 
-        aside.notes The cool thing is these are all things we want to accomplish when designing our react components
+        aside.notes
+            ul
+                li Good unit tests are concise
+                li Large amounts of mocking/setup are usually code smells
+                li The cool thing is these are all things we want to accomplish when designing our react components
 
     +slide
-        h2.fragment.fade-out AWESOME!!
+        h2 Suggested Structure
+
+        pre
+            code(data-trim contenteditable).
+                actions/
+                    CommandActions.js
+                    CommandActions.spec.js
+                    UserActions.js
+                    UserActions.spec.js
+                    ...
+                components/
+                    Header.js
+                    Header.spec.js
+                    Sidebar.js
+                    Sidebar.spec.js
+                    ...
+                containers/
+                    App.js
+                    App.spec.js
+                    Command.js
+                    Command.spec.js
+                    ...
+                reducers/
+                    index.js
+                    index.spec.js
+                    command.js
+                    command.spec.js
+                    ...
+
+        aside.notes Place test files right next to the file in test. Makes finding tests easy.
+
+    +slide
+        h2 AWESOME!!
 
         p.fragment.fade-in So now what?
 
-
     +slide(data-background="http://i.giphy.com/11rIergnpiYpvW.gif")
-        h2 Let&apos;s Get Set-up
+        h2 Let&apos;s Try it Out
+
+        p
+            a(href="https://github.com/schaab/github-widget")= 'Github Widget'
+
+    +slide
+        h2 Install Dependencies
+
+        aside.notes
+            ul
+                li Mocha
+                li Chai
+                li Enzyme
+                li Babel
+                li Sinon
 
     +slide(data-background="https://cldup.com/xFVFxOioAU.svg")
 
-        aside.notes Testing Framework can use Jasmine or Karma
+        aside.notes Can use any testing framework you want, choose Mocha because of familiarity
 
     +slide(data-background="https://avatars2.githubusercontent.com/u/1515293?v=3&s=800")
 
         aside.notes Can use any assertion library you want
 
-
     +slide
         h2 Enzyme
 
-        p More info at the
+        p More info at the&nbsp;
             a(href="https://github.com/airbnb/enzyme")= 'Enzyme github repo'
 
         aside.notes
             ul
-                li Allows 3 types of rendering to support different testing needs
+                li Solves 3 three challenges (isolation, lifecycle, html)
                 li familiar jQuery type selectors
+                li Why not jest? Not entirely a fan of auto-mocking
 
     +slide
         h2 shallow
 
         pre.fragment
-            code(data-trim contenteditable).
+            code.javascript(data-trim contenteditable).
                 import { shallow } from 'enzyme';
 
                 it('should have some things', () => {
                     const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
-                    expect(wrapper.find('&lt;selector&gt;')).to.have.length(3);
+                    expect(wrapper.find('.class')).to.have.length(3);
                 });
-
 
         aside.notes
             ul
@@ -164,7 +212,7 @@ block slides
         h2 mount
 
         pre.fragment
-            code(data-trim contenteditable).
+            code.javascript(data-trim contenteditable).
                 import { mount } from 'enzyme';
 
                 it('calls componentDidMount', () => {
@@ -184,7 +232,7 @@ block slides
         h2 render
 
         pre.fragment
-            code(data-trim contenteditable).
+            code.javascript(data-trim contenteditable).
                 import { render } from 'enzyme';
 
                 it('has words', () => {
@@ -202,58 +250,25 @@ block slides
     +slide
         h2 Babel
 
+        pre.fragment
+            code.javascript(data-trim contenteditable).
+                import { shallow } from 'enzyme';
+
+                // note ES2015 arrow function and JSX
+                // not currently supported with node
+                it('should have some things', () => {
+                    const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
+                    expect(wrapper.find('.class')).to.have.length(3);
+                });
+
         aside.notes Used to transpile tests
 
     +slide
         h2 Sinon
 
     +slide
-        h2 Suggested Structure
-
-        pre
-            code(data-trim contenteditable).
-                actions/
-                    CommandActions.js
-                    CommandActions.test.js
-                    UserActions.js
-                    UserActions.test.js
-                    ...
-                components/
-                    Header.js
-                    Header.test.js
-                    Sidebar.js
-                    Sidebar.test.js
-                    ...
-                containers/
-                    App.js
-                    App.test.js
-                    Command.js
-                    Command.test.js
-                    ...
-                reducers/
-                    index.js
-                    index.test.js
-                    command.js
-                    command.test.js
-                    ...
-
-        aside.notes Place test files right next to the file in test. Makes finding tests easy.
-
-    +slide
-        h2 Install Dependencies
-
-        pre
-            code(data-trim contenteditable).
-                npm i --save-dev enzyme mocha chai babel sinon jsdom react-addons-test-utils react-dom
-
-        aside.notes In theory babel should be installed already so you can use react and the new ES2016 hotness
-
-    +slide
         h2 Other Things to Consider
 
         ul
-
-            li ?
-
-
-
+            li Git pre-commit hooks
+            li Code Coverage
