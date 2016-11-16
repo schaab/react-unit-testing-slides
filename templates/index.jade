@@ -14,7 +14,7 @@ block title
   )
 
   block theme
-      link(rel="stylesheet" href="css/theme/solarized.css" id="theme")
+      link(rel="stylesheet" href="css/theme/blood.css" id="theme")
 //- Add your slides here. See templates/includes/_mixins.jade for information 
 //- on how `+slide` works.
 block slides
@@ -24,7 +24,7 @@ block slides
     - var githubHandle = 'schaab';
 
     +slide(data-background="http://i.giphy.com/lUN33MuYWsXXa.gif")
-        h1 Test Your Way to a Better Sleep
+        h2 Test Your Way to a Better Sleep
 
         p Unit test your react components
             br
@@ -39,7 +39,7 @@ block slides
                 a(href="mailto:" + authorEmail)= authorEmail
 
     +slide
-        h1 Why Unit Test?
+        h3 Why Unit Test?
 
         ul
             li.fragment Documentation for new developers
@@ -53,17 +53,14 @@ block slides
         aside.notes Shouldn&#8217;t have to really do this one but it almost feels necessary
 
     +slide
-        h1 Characteristics of a Good Unit Test
+        h3 Characteristics of a Good Unit Test
 
         aside.notes Readable, Trustworthy, Maintainable
 
     +slide
-        h2 Readable
+        h3 Readable
 
-        aside.notes tests a singular thing and is explicit. No outside dependencies.
-
-    +slide
-        pre
+        pre.fragment.fade-in
             code(data-trim contenteditable class="javascript").
                 describe('add()', () => {
                     it('should add stuffs', () => {
@@ -93,13 +90,12 @@ block slides
                     });
                 });
 
-    +slide
-        h2 Trustworthy
-
-        aside.notes
+        aside.notes tests a singular thing and is explicit. No outside dependencies.
 
     +slide
-        pre
+        h3 Trustworthy
+
+        pre.fragment.fade-in
             code(data-trim contenteditable class="javascript").
                 describe('add()', () => {
                     it('should add two positive numbers', () => {
@@ -107,8 +103,10 @@ block slides
                     });
                 });
 
+        aside.notes Tests are simple and you have seen them fail
+
     +slide
-        h2 Maintainable
+        h3 Maintainable
 
         aside.notes
             ul
@@ -117,7 +115,7 @@ block slides
                 li The cool thing is these are all things we want to accomplish when designing our react components
 
     +slide
-        h2 Suggested Structure
+        h3 Suggested Structure
 
         pre
             code(data-trim contenteditable).
@@ -146,109 +144,54 @@ block slides
                     command.spec.js
                     ...
 
-        aside.notes Place test files right next to the file in test. Makes finding tests easy.
+        aside.notes
+            ul
+                li Place test files right next to the file in test. Makes finding tests easy.
+                li Quick indication that component has been tested
 
     +slide
-        h2 AWESOME!!
+        h3 AWESOME!!
 
         p.fragment.fade-in So now what?
 
     +slide(data-background="http://i.giphy.com/11rIergnpiYpvW.gif")
-        h2 Let&apos;s Try it Out
+        h3 Let&apos;s Try it Out
 
         p
             a(href="https://github.com/schaab/github-widget")= 'Github Widget'
 
     +slide
-        h2 Install Dependencies
+        h3 Getting Started
 
         aside.notes
+            p Here are the packages/frameworks we will be using
             ul
-                li Mocha
-                li Chai
-                li Enzyme
+                li Mocha + Chai
                 li Babel
+                li Enzyme
                 li Sinon
 
-    +slide(data-background="https://cldup.com/xFVFxOioAU.svg")
-
-        aside.notes Can use any testing framework you want, choose Mocha because of familiarity
-
-    +slide(data-background="https://avatars2.githubusercontent.com/u/1515293?v=3&s=800")
-
-        aside.notes Can use any assertion library you want
-
     +slide
-        h2 Enzyme
-
-        p More info at the&nbsp;
-            a(href="https://github.com/airbnb/enzyme")= 'Enzyme github repo'
-
-        aside.notes
-            ul
-                li Solves 3 three challenges (isolation, lifecycle, html)
-                li familiar jQuery type selectors
-                li Why not jest? Not entirely a fan of auto-mocking
-
-    +slide
-        h2 shallow
+        h3 Mocha and Chai
 
         pre.fragment
             code.javascript(data-trim contenteditable).
-                import { shallow } from 'enzyme';
-
-                it('should have some things', () => {
-                    const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
-                    expect(wrapper.find('.class')).to.have.length(3);
+                describe('Thing under test', function() {
+                    it('should add some things', function() {
+                        expect(add(1, 2)).to.equal(3);
+                    });
                 });
 
         aside.notes
             ul
-                li Test component in isolation.
-                li No access to lifecycle events.
-                li Returns `ShallowWrapper` which allows you to query the rendered output
+                li mocha is a javascript testing framework
+                li chai is an assertion library
+                li npm install --save-dev mocha chai
+                li Can use any testing framework you want, choose Mocha because of familiarity
+                li Simple test example
 
     +slide
-        h2 mount
-
-        pre.fragment
-            code.javascript(data-trim contenteditable).
-                import { mount } from 'enzyme';
-
-                it('calls componentDidMount', () => {
-                    spy(WickedAwesomeComponent.prototype, 'componentDidMount');
-                    const wrapper = mount(&lt;WickedAwesomeComponent &#47;&gt;);
-                    expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce).to.equal(true);
-                });
-
-        aside.notes
-            ul
-                li Ideal for testing lifecycle events
-                li Must be run in a browser like environment
-                li Suggested to use jsdom, which is effectively a headless browser
-                li Can do many of the same queries as `shallow`
-
-    +slide
-        h2 render
-
-        pre.fragment
-            code.javascript(data-trim contenteditable).
-                import { render } from 'enzyme';
-
-                it('has words', () => {
-                    // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
-                    var wrapper = render(&ltWickedAwesomeComponent words="some words here" &#47;&gt;);
-                    expect(wrapper.text()).to.contain('some words here');
-                });
-
-        aside.notes
-            ul
-                li Used to render react components to static HTML
-                li Validate the produced HTML
-                li Uses a 3rd party HTML parsing library `Cheerio`
-
-    +slide
-        h2 Babel
+        h3 Babel
 
         pre.fragment
             code.javascript(data-trim contenteditable).
@@ -261,14 +204,88 @@ block slides
                     expect(wrapper.find('.class')).to.have.length(3);
                 });
 
-        aside.notes Used to transpile tests
+        aside.notes
+            ul
+                li mocha only understands ES5 syntax
+                li babel-register
+                li Used to transpile tests on the fly
+                li Update simple test
 
     +slide
-        h2 Sinon
+        +slide
+            h3 Enzyme
 
-    +slide
-        h2 Other Things to Consider
+            p More info at the&nbsp;
+                a(href="https://github.com/airbnb/enzyme")= 'Enzyme github repo'
 
-        ul
-            li Git pre-commit hooks
-            li Code Coverage
+            aside.notes
+                ul
+                    li Solves 3 three challenges (isolation, lifecycle, html)
+                    li familiar jQuery type selectors
+                    li Why not jest? Not entirely a fan of auto-mocking
+
+        +slide
+            h3 shallow
+
+            pre.fragment
+                code.javascript(data-trim contenteditable).
+                    import { shallow } from 'enzyme';
+
+                    it('should have some things', () => {
+                        const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
+                        expect(wrapper.find('.class')).to.have.length(3);
+                    });
+
+            aside.notes
+                ul
+                    li Test component in isolation.
+                    li No access to lifecycle events.
+                    li Returns `ShallowWrapper` which allows you to query the rendered output
+
+        +slide
+            h3 mount
+
+            pre.fragment
+                code.javascript(data-trim contenteditable).
+                    import { mount } from 'enzyme';
+                    import sinon from 'sinon';
+
+                    it('calls componentDidMount', () => {
+                        spy(WickedAwesomeComponent.prototype, 'componentDidMount');
+                        const wrapper = mount(&lt;WickedAwesomeComponent &#47;&gt;);
+                        expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce)
+                            .to.equal(true);
+                    });
+
+            aside.notes
+                ul
+                    li Ideal for testing lifecycle events
+                    li Must be run in a browser like environment
+                    li Suggested to use jsdom, which is effectively a headless browser
+                    li Can do many of the same queries as `shallow`
+
+        +slide
+            h3 render
+
+            pre.fragment
+                code.javascript(data-trim contenteditable).
+                    import { render } from 'enzyme';
+
+                    it('has words', () => {
+                        // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
+                        var wrapper = render(&ltWickedAwesomeComponent words="some words here" &#47;&gt;);
+                        expect(wrapper.text()).to.contain('some words here');
+                    });
+
+            aside.notes
+                ul
+                    li Used to render react components to static HTML
+                    li Validate the produced HTML
+                    li Uses a 3rd party HTML parsing library `Cheerio`
+
+    +slide(data-background="http://i.giphy.com/jSB2l4zJ82Rvq.gif")
+
+
+
+
+
