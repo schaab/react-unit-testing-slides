@@ -166,6 +166,12 @@ block slides
         h3 Getting Started
 
         aside.notes
+            p What sort of tools will we need?
+            ul
+                li Test Runner (mocha, jest, karma)
+                li React test helper (enzyme)
+                li Mocking library (rewire, sinon)
+
             p Here are the packages/frameworks we will be using
             ul
                 li Mocha + Chai
@@ -186,11 +192,9 @@ block slides
 
         aside.notes
             ul
-                li mocha is a javascript testing framework
+                li mocha is a javascript testing framework. Note `describe()` and `it()`
                 li chai is an assertion library
-                li npm install --save-dev mocha chai
                 li Can use any testing framework you want, choose Mocha because of familiarity
-                li Simple test example
 
     +slide
         h3 Babel
@@ -209,9 +213,8 @@ block slides
         aside.notes
             ul
                 li mocha only understands ES5 syntax
-                li babel-register
+                li babel-register package add `--compilers js:babel-core/register`
                 li Used to transpile tests on the fly
-                li Update simple test
 
     +slide
         +slide
@@ -224,7 +227,7 @@ block slides
                 ul
                     li Solves 3 three challenges (isolation, lifecycle, html)
                     li familiar jQuery type selectors
-                    li Why not jest? Not entirely a fan of auto-mocking
+                    li Selectors can be css selector, component, component display name or object selector (subset of their properties)
 
         +slide
             h3 shallow
