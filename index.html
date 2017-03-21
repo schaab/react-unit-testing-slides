@@ -8,10 +8,10 @@
     <title>Test Your Way to a Better Sleep</title>
     <meta name="description" content="Getting started testing your React components with Enzyme">
     <meta name="author" content="Jared Schaab">
-    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+    <link rel="stylesheet" href="css/theme/blood.css" id="theme">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="lib/css/zenburn.css">
-    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+    <link rel="stylesheet" href="css/theme/blood.css" id="theme">
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
@@ -25,13 +25,15 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-background="http://i.giphy.com/lUN33MuYWsXXa.gif">
-          <h1>Test Your Way to a Better Sleep</h1>
+        <section>
+          <h2>Test Your Way to a Better Sleep</h2>
           <p>Unit test your react components<br>and take a step out of the Javascript Wild West</p>
           <p>by <a>Jared Schaab</a><br><small><a href="https://twitter.com/JaredSchaab">@JaredSchaab</a> |&nbsp;<a href="mailto:jared.schaab@gmail.com">jared.schaab@gmail.com</a></small></p>
         </section>
+        <section data-background="http://i.giphy.com/lUN33MuYWsXXa.gif">
+        </section>
         <section>
-          <h1>Why Unit Test?</h1>
+          <h3>Why Unit Test?</h3>
           <ul>
             <li class="fragment">Documentation for new developers</li>
             <li class="fragment">Degree of confidence that functionality is correct</li>
@@ -42,15 +44,12 @@
           <aside class="notes">Shouldn&#8217;t have to really do this one but it almost feels necessary</aside>
         </section>
         <section>
-          <h1>Characteristics of a Good Unit Test</h1>
+          <h3>Characteristics of a Good Unit Test</h3>
           <aside class="notes">Readable, Trustworthy, Maintainable</aside>
         </section>
         <section>
-          <h2>Readable</h2>
-          <aside class="notes">tests a singular thing and is explicit. No outside dependencies.</aside>
-        </section>
-        <section>
-          <pre><code data-trim contenteditable class="javascript">describe('add()', () => {
+          <h3>Readable</h3>
+          <pre class="fragment fade-in"><code data-trim contenteditable class="javascript">describe('add()', () => {
     it('should add stuffs', () => {
         expect(add(1, 2)).toEqual(3);
         expect(add(0, 0)).toEqual(0);
@@ -76,21 +75,20 @@
     });
 });
 </code></pre>
+          <aside class="notes">tests a singular thing and is explicit. No outside dependencies.</aside>
         </section>
         <section>
-          <h2>Trustworthy</h2>
-          <aside class="notes"></aside>
-        </section>
-        <section>
-          <pre><code data-trim contenteditable class="javascript">describe('add()', () => {
+          <h3>Trustworthy</h3>
+          <pre class="fragment fade-in"><code data-trim contenteditable class="javascript">describe('add()', () => {
     it('should add two positive numbers', () => {
         expect(3).toEqual(3);
     });
 });
 </code></pre>
+          <aside class="notes">Tests are simple and you have seen them fail</aside>
         </section>
         <section>
-          <h2>Maintainable</h2>
+          <h3>Maintainable</h3>
           <aside class="notes">
             <ul>
               <li>Good unit tests are concise</li>
@@ -100,7 +98,7 @@
           </aside>
         </section>
         <section>
-          <h2>Suggested Structure</h2>
+          <h3>Suggested Structure</h3>
           <pre><code data-trim contenteditable>actions/
     CommandActions.js
     CommandActions.spec.js
@@ -126,101 +124,53 @@ reducers/
     command.spec.js
     ...
 </code></pre>
-          <aside class="notes">Place test files right next to the file in test. Makes finding tests easy.</aside>
+          <aside class="notes">
+            <ul>
+              <li>Place test files right next to the file in test. Makes finding tests easy.</li>
+              <li>Quick indication that component has been tested</li>
+            </ul>
+          </aside>
         </section>
         <section>
-          <h2>AWESOME!!</h2>
+          <h3>AWESOME!!</h3>
           <p class="fragment fade-in">So now what?</p>
         </section>
         <section data-background="http://i.giphy.com/11rIergnpiYpvW.gif">
-          <h2>Let&apos;s Try it Out</h2>
+          <h3>Let&apos;s Try it Out</h3>
           <p><a href="https://github.com/schaab/github-widget">Github Widget</a></p>
         </section>
         <section>
-          <h2>Install Dependencies</h2>
+          <h3>Getting Started</h3>
           <aside class="notes">
+            <p>Here are the packages/frameworks we will be using</p>
             <ul>
-              <li>Mocha</li>
-              <li>Chai</li>
-              <li>Enzyme</li>
+              <li>Mocha + Chai</li>
               <li>Babel</li>
+              <li>Enzyme</li>
               <li>Sinon</li>
             </ul>
           </aside>
         </section>
-        <section data-background="https://cldup.com/xFVFxOioAU.svg">
-          <aside class="notes">Can use any testing framework you want, choose Mocha because of familiarity</aside>
-        </section>
-        <section data-background="https://avatars2.githubusercontent.com/u/1515293?v=3&amp;s=800">
-          <aside class="notes">Can use any assertion library you want</aside>
-        </section>
         <section>
-          <h2>Enzyme</h2>
-          <p>More info at the&nbsp;<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
-          <aside class="notes">
-            <ul>
-              <li>Solves 3 three challenges (isolation, lifecycle, html)</li>
-              <li>familiar jQuery type selectors</li>
-              <li>Why not jest? Not entirely a fan of auto-mocking</li>
-            </ul>
-          </aside>
-        </section>
-        <section>
-          <h2>shallow</h2>
-          <pre class="fragment"><code data-trim contenteditable class="javascript">import { shallow } from 'enzyme';
-
-it('should have some things', () => {
-    const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
-    expect(wrapper.find('.class')).to.have.length(3);
+          <h3>Mocha and Chai</h3>
+          <pre class="fragment"><code data-trim contenteditable class="javascript">describe('Thing under test', function() {
+    it('should add some things', function() {
+        expect(add(1, 2)).to.equal(3);
+    });
 });
 </code></pre>
           <aside class="notes">
             <ul>
-              <li>Test component in isolation.</li>
-              <li>No access to lifecycle events.</li>
-              <li>Returns `ShallowWrapper` which allows you to query the rendered output</li>
+              <li>mocha is a javascript testing framework</li>
+              <li>chai is an assertion library</li>
+              <li>npm install --save-dev mocha chai</li>
+              <li>Can use any testing framework you want, choose Mocha because of familiarity</li>
+              <li>Simple test example</li>
             </ul>
           </aside>
         </section>
         <section>
-          <h2>mount</h2>
-          <pre class="fragment"><code data-trim contenteditable class="javascript">import { mount } from 'enzyme';
-
-it('calls componentDidMount', () => {
-    spy(WickedAwesomeComponent.prototype, 'componentDidMount');
-    const wrapper = mount(&lt;WickedAwesomeComponent &#47;&gt;);
-    expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce).to.equal(true);
-});
-</code></pre>
-          <aside class="notes">
-            <ul>
-              <li>Ideal for testing lifecycle events</li>
-              <li>Must be run in a browser like environment</li>
-              <li>Suggested to use jsdom, which is effectively a headless browser</li>
-              <li>Can do many of the same queries as `shallow`</li>
-            </ul>
-          </aside>
-        </section>
-        <section>
-          <h2>render</h2>
-          <pre class="fragment"><code data-trim contenteditable class="javascript">import { render } from 'enzyme';
-
-it('has words', () => {
-    // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
-    var wrapper = render(&ltWickedAwesomeComponent words="some words here" &#47;&gt;);
-    expect(wrapper.text()).to.contain('some words here');
-});
-</code></pre>
-          <aside class="notes">
-            <ul>
-              <li>Used to render react components to static HTML</li>
-              <li>Validate the produced HTML</li>
-              <li>Uses a 3rd party HTML parsing library `Cheerio`</li>
-            </ul>
-          </aside>
-        </section>
-        <section>
-          <h2>Babel</h2>
+          <h3>Babel</h3>
           <pre class="fragment"><code data-trim contenteditable class="javascript">import { shallow } from 'enzyme';
 
 // note ES2015 arrow function and JSX
@@ -230,17 +180,85 @@ it('should have some things', () => {
     expect(wrapper.find('.class')).to.have.length(3);
 });
 </code></pre>
-          <aside class="notes">Used to transpile tests</aside>
+          <aside class="notes">
+            <ul>
+              <li>mocha only understands ES5 syntax</li>
+              <li>babel-register</li>
+              <li>Used to transpile tests on the fly</li>
+              <li>Update simple test</li>
+            </ul>
+          </aside>
         </section>
         <section>
-          <h2>Sinon</h2>
+          <section>
+            <h3>Enzyme</h3>
+            <p>More info at the&nbsp;<a href="https://github.com/airbnb/enzyme">Enzyme github repo</a></p>
+            <aside class="notes">
+              <ul>
+                <li>Solves 3 three challenges (isolation, lifecycle, html)</li>
+                <li>familiar jQuery type selectors</li>
+                <li>Why not jest? Not entirely a fan of auto-mocking</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h3>shallow</h3>
+            <pre class="fragment"><code data-trim contenteditable class="javascript">import { shallow } from 'enzyme';
+
+it('should have some things', () => {
+    const wrapper = shallow(&lt;WickedAwesomeComponent &#47;&gt;);
+    expect(wrapper.find('.class')).to.have.length(3);
+});
+</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Test component in isolation.</li>
+                <li>No access to lifecycle events.</li>
+                <li>Returns `ShallowWrapper` which allows you to query the rendered output</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h3>mount</h3>
+            <pre class="fragment"><code data-trim contenteditable class="javascript">import { mount } from 'enzyme';
+import sinon from 'sinon';
+
+it('calls componentDidMount', () => {
+    spy(WickedAwesomeComponent.prototype, 'componentDidMount');
+    const wrapper = mount(&lt;WickedAwesomeComponent &#47;&gt;);
+    expect(WickedAwesomeComponent.prototype.componentDidMount.calledOnce)
+        .to.equal(true);
+});
+</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Ideal for testing lifecycle events</li>
+                <li>Must be run in a browser like environment</li>
+                <li>Suggested to use jsdom, which is effectively a headless browser</li>
+                <li>Can do many of the same queries as `shallow`</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h3>render</h3>
+            <pre class="fragment"><code data-trim contenteditable class="javascript">import { render } from 'enzyme';
+
+it('has words', () => {
+    // assuming the WickedAwesomeComponent renders &lt;div&gt;{ words }&lt;div&#47;&gt;
+    var wrapper = render(&ltWickedAwesomeComponent words="some words here" &#47;&gt;);
+    expect(wrapper.text()).to.contain('some words here');
+});
+</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Used to render react components to static HTML</li>
+                <li>Validate the produced HTML</li>
+                <li>Uses a 3rd party HTML parsing library `Cheerio`</li>
+              </ul>
+            </aside>
+          </section>
         </section>
-        <section>
-          <h2>Other Things to Consider</h2>
-          <ul>
-            <li>Git pre-commit hooks</li>
-            <li>Code Coverage</li>
-          </ul>
+        <section data-background="http://i.giphy.com/jSB2l4zJ82Rvq.gif">
         </section>
       </div>
     </div>
