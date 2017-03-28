@@ -27,13 +27,14 @@
       <div class="slides">
         <section>
           <h2>Test Your Way to a Better Sleep</h2>
-          <p>Unit test your react components<br>and take a step out of the Javascript Wild West</p>
+          <p>Unit test your react components<br>and finally get a full nights sleep!</p>
           <p>by <a>Jared Schaab</a><br><small><a href="https://twitter.com/JaredSchaab">@JaredSchaab</a> |&nbsp;<a href="mailto:jared.schaab@gmail.com">jared.schaab@gmail.com</a></small></p>
         </section>
-        <section data-background="http://i.giphy.com/lUN33MuYWsXXa.gif">
+        <section data-background="https://media.giphy.com/media/mF4k0YXIHDHzy/giphy.gif">
         </section>
         <section>
-          <h3>Why Unit Test?</h3>
+          <h2>Sleep Tip #1</h2>
+          <h3>Write Unit Tests</h3>
           <ul>
             <li class="fragment">Documentation for new developers</li>
             <li class="fragment">Degree of confidence that functionality is correct</li>
@@ -44,7 +45,8 @@
           <aside class="notes">Shouldn&#8217;t have to really do this one but it almost feels necessary</aside>
         </section>
         <section>
-          <h3>Characteristics of a Good Unit Test</h3>
+          <h2>Sleep Tip #2</h2>
+          <h3>Make Sure They Don&apos;t Suck</h3>
           <aside class="notes">Readable, Trustworthy, Maintainable</aside>
         </section>
         <section>
@@ -85,7 +87,7 @@
     });
 });
 </code></pre>
-          <aside class="notes">Tests are simple and you have seen them fail</aside>
+          <aside class="notes">Tests are simple and you have seen them fail. Jon will probably touch on this in his presentation</aside>
         </section>
         <section>
           <h3>Maintainable</h3>
@@ -98,7 +100,8 @@
           </aside>
         </section>
         <section>
-          <h3>Suggested Structure</h3>
+          <h2>Sleep Tip #3</h2>
+          <h3>Organize</h3>
           <pre><code data-trim contenteditable>actions/
     CommandActions.js
     CommandActions.spec.js
@@ -137,14 +140,15 @@ reducers/
         </section>
         <section>
           <h3>Tools of the Trade</h3>
-          <aside class="notes">
-            <p>What sort of tools will we need?</p>
+          <p>What sort of tools will we need?
             <ul>
-              <li>Test Runner (mocha, jest, karma)</li>
-              <li>Babel</li>
-              <li>React test helper (enzyme)</li>
-              <li>Mocking library (rewire, sinon)</li>
+              <li class="fragment">Test Runner (mocha, jest, karma)</li>
+              <li class="fragment">Babel</li>
+              <li class="fragment">React test helper (enzyme)</li>
+              <li class="fragment">Mocking library (rewire, sinon)</li>
             </ul>
+          </p>
+          <aside class="notes">
             <p>Here are the packages/frameworks we will be using</p>
             <ul>
               <li>Mocha + Chai</li>
@@ -258,7 +262,7 @@ it('has words', () => {
             </aside>
           </section>
         </section>
-        <section data-background="http://i.giphy.com/jSB2l4zJ82Rvq.gif">
+        <section data-background="https://media.giphy.com/media/xT8qBvH1pAhtfSx52U/giphy.gif">
         </section>
       </div>
     </div>
