@@ -135,13 +135,16 @@ reducers/
           <h3>AWESOME!!</h3>
           <p class="fragment fade-in">So now what?</p>
         </section>
-        <section data-background="http://i.giphy.com/11rIergnpiYpvW.gif">
-          <h3>Let&apos;s Try it Out</h3>
-          <p><a href="https://github.com/schaab/github-widget">Github Widget</a></p>
-        </section>
         <section>
-          <h3>Getting Started</h3>
+          <h3>Tools of the Trade</h3>
           <aside class="notes">
+            <p>What sort of tools will we need?</p>
+            <ul>
+              <li>Test Runner (mocha, jest, karma)</li>
+              <li>Babel</li>
+              <li>React test helper (enzyme)</li>
+              <li>Mocking library (rewire, sinon)</li>
+            </ul>
             <p>Here are the packages/frameworks we will be using</p>
             <ul>
               <li>Mocha + Chai</li>
@@ -161,11 +164,9 @@ reducers/
 </code></pre>
           <aside class="notes">
             <ul>
-              <li>mocha is a javascript testing framework</li>
+              <li>mocha is a javascript testing framework. Note `describe()` and `it()`</li>
               <li>chai is an assertion library</li>
-              <li>npm install --save-dev mocha chai</li>
               <li>Can use any testing framework you want, choose Mocha because of familiarity</li>
-              <li>Simple test example</li>
             </ul>
           </aside>
         </section>
@@ -183,9 +184,8 @@ it('should have some things', () => {
           <aside class="notes">
             <ul>
               <li>mocha only understands ES5 syntax</li>
-              <li>babel-register</li>
+              <li>babel-register package add `--compilers js:babel-core/register`</li>
               <li>Used to transpile tests on the fly</li>
-              <li>Update simple test</li>
             </ul>
           </aside>
         </section>
@@ -197,7 +197,7 @@ it('should have some things', () => {
               <ul>
                 <li>Solves 3 three challenges (isolation, lifecycle, html)</li>
                 <li>familiar jQuery type selectors</li>
-                <li>Why not jest? Not entirely a fan of auto-mocking</li>
+                <li>Selectors can be css selector, component, component display name or object selector (subset of their properties)</li>
               </ul>
             </aside>
           </section>
