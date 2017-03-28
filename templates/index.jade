@@ -28,7 +28,7 @@ block slides
 
         p Unit test your react components
             br
-            | and take a step out of the Javascript Wild West
+            | and finally get a full nights sleep!
 
 
         p by #[a(href=authorLink)= author]
@@ -38,10 +38,12 @@ block slides
                 |  |&nbsp;
                 a(href="mailto:" + authorEmail)= authorEmail
 
-    +slide(data-background="http://i.giphy.com/lUN33MuYWsXXa.gif")
+    +slide(data-background="https://media.giphy.com/media/mF4k0YXIHDHzy/giphy.gif")
 
     +slide
-        h3 Why Unit Test?
+        h2 Sleep Tip #1
+
+        h3 Write Unit Tests
 
         ul
             li.fragment Documentation for new developers
@@ -55,7 +57,9 @@ block slides
         aside.notes Shouldn&#8217;t have to really do this one but it almost feels necessary
 
     +slide
-        h3 Characteristics of a Good Unit Test
+        h2 Sleep Tip #2
+
+        h3 Make Sure They Don&apos;t Suck
 
         aside.notes Readable, Trustworthy, Maintainable
 
@@ -105,7 +109,7 @@ block slides
                     });
                 });
 
-        aside.notes Tests are simple and you have seen them fail
+        aside.notes Tests are simple and you have seen them fail. Jon will probably touch on this in his presentation
 
     +slide
         h3 Maintainable
@@ -117,7 +121,9 @@ block slides
                 li The cool thing is these are all things we want to accomplish when designing our react components
 
     +slide
-        h3 Suggested Structure
+        h2 Sleep Tip #3
+
+        h3 Organize
 
         pre
             code(data-trim contenteditable).
@@ -159,13 +165,14 @@ block slides
     +slide
         h3 Tools of the Trade
 
-        aside.notes
-            p What sort of tools will we need?
+        p What sort of tools will we need?
             ul
-                li Test Runner (mocha, jest, karma)
-                li Babel
-                li React test helper (enzyme)
-                li Mocking library (rewire, sinon)
+                li.fragment Test Runner (mocha, jest, karma)
+                li.fragment Babel
+                li.fragment React test helper (enzyme)
+                li.fragment Mocking library (rewire, sinon)
+
+        aside.notes
 
             p Here are the packages/frameworks we will be using
             ul
@@ -283,7 +290,7 @@ block slides
                     li Validate the produced HTML
                     li Uses a 3rd party HTML parsing library `Cheerio`
 
-    +slide(data-background="http://i.giphy.com/jSB2l4zJ82Rvq.gif")
+    +slide(data-background="https://media.giphy.com/media/xT8qBvH1pAhtfSx52U/giphy.gif")
 
 
 
